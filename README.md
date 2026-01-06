@@ -2,15 +2,16 @@
 
 A modern React application that demonstrates clean architecture principles with complete separation of concerns. The app allows users to search for GitHub users, view detailed profiles, and browse repositories using GitHub's public API.
 
-## 🎯 Project Overview
+## Project Overview
 
 This application showcases best practices in React development:
+
 - **Pure Presentation Layer**: UI components are stateless and only handle rendering
 - **Logic Layer**: All business logic, state management, and data fetching live in custom hooks
 - **React Query Integration**: Efficient data fetching, caching, and state management
 - **Type Safety**: Full TypeScript implementation
 
-## ✨ Features
+## Features
 
 - **User Search**: Search GitHub users by username or keyword (minimum 3 characters)
 - **User Profiles**: View detailed user information including:
@@ -26,7 +27,7 @@ This application showcases best practices in React development:
 - **Error Handling**: User-friendly error messages
 - **Caching**: React Query automatically caches API responses for 5 minutes
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **React 19** - UI library
 - **TypeScript** - Type safety
@@ -38,7 +39,7 @@ This application showcases best practices in React development:
 - **React Icons** - Icon library
 - **date-fns** - Date formatting
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 hooks-demo/
@@ -83,13 +84,14 @@ hooks-demo/
 └── README.md
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ### Separation of Concerns
 
 The application follows a strict separation between presentation and logic:
 
 #### **Presentation Layer** (`components/`)
+
 - Pure functional components
 - Receive props and render JSX
 - No state management
@@ -97,6 +99,7 @@ The application follows a strict separation between presentation and logic:
 - No data fetching
 
 Example:
+
 ```tsx
 // Pure presentation component
 export const UserCard = ({ user, onClick }: UserCardProps) => {
@@ -105,6 +108,7 @@ export const UserCard = ({ user, onClick }: UserCardProps) => {
 ```
 
 #### **Logic Layer** (`hooks/`)
+
 - Custom hooks using React Query
 - Handle all state management
 - Perform data fetching
@@ -112,11 +116,12 @@ export const UserCard = ({ user, onClick }: UserCardProps) => {
 - Return data, loading states, errors, and handlers
 
 Example:
+
 ```tsx
 // Logic hook
 export const useSearchUsers = (query: string) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['users', query],
+    queryKey: ["users", query],
     queryFn: () => fetchUsers(query),
   });
   return { users: data, isLoading, error };
@@ -124,15 +129,16 @@ export const useSearchUsers = (query: string) => {
 ```
 
 #### **Page Components** (`pages/`)
+
 - Compose hooks and UI components
 - Handle routing logic
 - Pass data and handlers to presentation components
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
@@ -140,11 +146,13 @@ export const useSearchUsers = (query: string) => {
 1. **Clone the repository** (or navigate to the project directory)
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server:**
+
    ```bash
    npm run dev
    ```
@@ -160,7 +168,7 @@ export const useSearchUsers = (query: string) => {
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
-## 📖 Usage
+## Usage
 
 ### Searching for Users
 
@@ -180,18 +188,20 @@ export const useSearchUsers = (query: string) => {
 - Use browser back button for navigation
 - Direct URL access: `/user/{username}` or `/user/{username}/repos`
 
-## 🔑 Key Concepts
+## Key Concepts
 
 ### React Query Hooks
 
 The app uses three main data-fetching hooks:
 
 1. **`useSearchUsers(query)`** - Searches GitHub users
+
    - Query key: `['users', query]`
    - Enabled only when query length > 2
    - Sorts results by relevance score
 
 2. **`useFetchUser(username)`** - Fetches single user profile
+
    - Query key: `['user', username]`
    - Caches for 5 minutes
 
@@ -215,19 +225,21 @@ The app uses three main data-fetching hooks:
 - `/user/:username/repos` - User repositories (nested route)
 - `*` - 404 page
 
-## 🎨 Styling
+## Styling
 
 The app uses **Tailwind CSS** for styling:
+
 - Utility-first approach
 - Responsive design with breakpoints
 - Consistent color scheme and spacing
 - Custom components styled with Tailwind classes
 
-## 🧪 Development
+## Development
 
 ### React Query Devtools
 
 In development mode, React Query Devtools are available:
+
 - Look for the React Query logo in the bottom-left corner
 - Click to open the devtools panel
 - Inspect queries, cache, and refetch status
@@ -235,11 +247,12 @@ In development mode, React Query Devtools are available:
 ### Type Safety
 
 All components and hooks are fully typed:
+
 - User and Repo interfaces match GitHub API responses
 - Props are strictly typed
 - Hooks return typed values
 
-## 📝 Code Quality
+## Code Quality
 
 - **ESLint** - Code linting
 - **TypeScript** - Type checking
@@ -247,11 +260,11 @@ All components and hooks are fully typed:
 - **Custom Hooks** - Reusable logic
 - **Separation of Concerns** - Clear layer boundaries
 
-## 📄 License
+## License
 
 This project is for educational purposes.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - GitHub API for providing public access
 - TanStack for React Query
